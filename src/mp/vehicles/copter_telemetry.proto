@@ -1,6 +1,23 @@
 syntax = "proto3";
 package pb.mp;
 
+import "mp/actuator.proto";
+
+message QuadcopterActuators {
+    Motor fl = 1;
+    Motor fr = 2;
+    Motor bl = 3;
+    Motor br = 4;
+}
+
+// Add HelicopterActuators or HexcopterActuators
+
 message CopterTelemetry {
-    
+    // Reserved for copter shared telemetry like control
+    // algorithm state, flight mode (landing, hover, ...), etc.
+    reserved 1 to 8;
+
+    oneof actuators {
+        QuadcopterActuators quadcopter = 9;
+    }
 }

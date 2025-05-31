@@ -3,6 +3,7 @@ package pb.mp;
 
 import "mp/sensor.proto";
 import "mp/state.proto";
+import "mp/vehicles/copter_telemetry.proto";
 
 message Telemetry {
     // Globaly unique vehicle id
@@ -24,5 +25,8 @@ message Telemetry {
     // Sent if the vehicle has GPS
     Coordinates coordinates     = 11;
     
-    // TODO: Add vehicle specific telemetry as oneof
+    // Vehicle specific telemetry
+    oneof vehicle {
+        CopterTelemetry copter  = 12;
+    }
 }
