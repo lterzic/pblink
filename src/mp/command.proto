@@ -4,10 +4,11 @@ package pb.mp;
 import "mp/vehicles/copter_command.proto";
 
 message Command {
-    // Add vehicle ID
+    // Future-proof
     reserved 1, 2, 3, 4;
 
-    oneof command_type {
-        CopterCommand copter_command = 5;
+    // Vehicle specific commands
+    oneof vehicle {
+        CopterCommand copter    = 5;
     }
 }

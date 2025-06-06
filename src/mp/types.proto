@@ -15,3 +15,9 @@ message Vector4f {
     float y = 3;
     float z = 4;
 }
+
+message Coordinates {
+    float longitude = 1;
+    float latitude  = 2;
+    float altitude  = 3;
+}

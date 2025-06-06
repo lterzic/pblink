@@ -3,30 +3,23 @@ package pb.mp;
 
 import "mp/sensor.proto";
 import "mp/state.proto";
+import "mp/types.proto";
 import "mp/vehicles/copter_telemetry.proto";
 
 message Telemetry {
-    // Globaly unique vehicle id
-    uint32 vehicle_id           = 1;
-    // Session ID unique for this vehicle
-    uint32 session_id           = 2;
-    // Message ID unique within the current session
-    uint32 message_id           = 3;
-    // Time in milliseconds since the start of the session
-    uint32 time_since_start     = 4;
+    // Vehicle dynamics (kinematics)
+    State state                 = 1;
+    // Global coordinates
+    // Sent if the vehicle has GNSS
+    Coordinates coordinates     = 2;
+    // TODO: Sensor data should be vehicle specific
+    Sensors sensors             = 3;
 
     // Future-proof
-    reserved 5, 6, 7, 8;
-
-    // State - always sent
-    State state                 = 9;
-    // TODO: Determine if sensor data should be vehicle specific
-    Sensors sensors             = 10;
-    // Sent if the vehicle has GPS
-    Coordinates coordinates     = 11;
+    reserved 4, 5, 6, 7, 8;
     
     // Vehicle specific telemetry
     oneof vehicle {
-        CopterTelemetry copter  = 12;
+        CopterTelemetry copter  = 9;
     }
 }
