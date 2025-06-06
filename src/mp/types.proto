@@ -21,3 +21,5 @@ message Coordinates {
     float latitude  = 2;
     float altitude  = 3;
 }
+
+// Add message Timestamp { oneof { uint32 ms_since_start, protobuf.timestamp, ... } }

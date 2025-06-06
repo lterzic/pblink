@@ -9,8 +9,14 @@ enum LogLevel {
     LOG_LEVEL_ERROR     = 4;
 }
 
-message LogMessage {
-    // TODO: Add a timestamp and a log id
-    string message      = 1;
-    LogLevel level      = 2;
+message Log {
+    // Log severity (info, warning, ...)
+    LogLevel level      = 1;
+    // Message
+    string message      = 2;
+    // System uptime in milliseconds
+    uint32 timestamp_ms = 3;
+    // Log message sequence number (in
+    // the current session)
+    uint32 message_id   = 4;
 }
