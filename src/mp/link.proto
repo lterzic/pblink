@@ -1,0 +1,40 @@
+syntax = "proto3";
+package pb.mp;
+
+import "mp/command/command.proto";
+import "mp/telemetry/log.proto";
+import "mp/telemetry/telemetry.proto";
+
+// TODO: Remove vehicle specific telemetry and command
+// messages from Telemetry and Command, and define for
+// each vehicle <Vehicle>Uplink and <Vehicle>Downlink
+// and add to payloads here
+
+// Top-level message wrapper for messages from
+// GCS to the vehicle
+message UplinkMessage {
+    // Uplink message sequence id
+    uint32 message_id   = 1;
+    // Destination (vehicle) ID, Source (GCS) ID, Session ID, ...
+    reserved 2 to 7;
+
+    oneof payload {
+        // Input command
+        Command command = 8;
+        // TODO: Mission upload, subscribe to sensor, set configuration, ...
+    }
+}
+
+// Top-level message wrapper for messages from
+// the vehicle to GCS
+message DownlinkMessage {
+    // Downlink message sequence id
+    uint32 message_id   = 1;
+    // Destination (vehicle) ID, Source (GCS) ID, Session ID, ...
+    reserved 2 to 7;
+
+    oneof payload {
+        Telemetry telemetry = 8;
+        Log log             = 9;
+    }
+}
