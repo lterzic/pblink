@@ -3,6 +3,9 @@ package pb.mp;
 
 import "mp/types.proto";
 
+// TODO: Add PowerSource as a universal measure
+// power (energy) for batteries and fuel
+
 message Battery {
     // Volts
     float voltage   = 1;

@@ -1,11 +1,6 @@
 syntax = "proto3";
 package pb.mp;
 
-// TODO: Define Power message in sensor proto
-// with voltage, current and percentage (optionally)
-// Define Battery as Power and percentage (if not included in Power)
-// Include power with sensor data
-
 message Motor {
     // Current motor speed in radians/second
     float angular_speed     = 1;
