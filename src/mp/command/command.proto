@@ -1,0 +1,14 @@
+syntax = "proto3";
+package pb.mp;
+
+import "mp/vehicles/copter_command.proto";
+
+message Command {
+    // Future-proof
+    reserved 1, 2, 3, 4;
+
+    // Vehicle specific commands
+    oneof vehicle {
+        CopterCommand copter    = 5;
+    }
+}
