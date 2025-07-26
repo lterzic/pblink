@@ -1,0 +1,7 @@
+syntax = "proto3";
+package pb.mp;
+
+message Version {
+    uint32 major = 1;
+    uint32 minor = 2;
+}

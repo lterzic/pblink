@@ -1,9 +1,9 @@
 syntax = "proto3";
 package pb.mp;
 
-import "mp/sensor.proto";
-import "mp/state.proto";
-import "mp/types.proto";
+import "mp/telemetry/sensor.proto";
+import "mp/telemetry/state.proto";
+import "mp/common/types.proto";
 import "mp/vehicles/copter_telemetry.proto";
 
 message Telemetry {

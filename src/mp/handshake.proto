@@ -1,0 +1,24 @@
+syntax = "proto3";
+package pb.mp;
+
+// 3-way handshake to establish a connection
+
+// First part of the handshake - broadcast presence
+// Periodically sent by the vehicle while there is no
+// established connection
+message HandshakeBroadcast {
+    // Send vehicle id, firmware and hardware versions, proto version, ...
+    // Send connection information (LoRaWAN address, IP, MAC, ...)
+}
+
+// Second part of the handshake - request the connection
+// to the vehicle (sent by the user)
+message HandshakeRequest {
+    // TODO: Send clock synchronization data, session ID
+}
+
+// Third part - Accept or decline the handshake
+// (sent by the vehicle)
+message HandshakeResponse {
+
+}
