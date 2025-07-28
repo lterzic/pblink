@@ -1,29 +1,30 @@
 syntax = "proto3";
 package pb.mp;
 
+import "mp/common/types.proto";
 import "mp/telemetry/sensor.proto";
 import "mp/telemetry/state.proto";
-import "mp/common/types.proto";
+import "mp/telemetry/system.proto";
 import "mp/vehicles/copter_telemetry.proto";
 
 message Telemetry {
+    // System uptime in milliseconds
+    uint32 timestamp_ms         = 1;
+    // In case of additional metadata like
+    // message_id (telemetry-specific), ...
+    reserved 2 to 4;
+
     // Vehicle dynamics (kinematics)
-    State state                 = 1;
+    State state                 = 5;
     // Global coordinates
     // Sent if the vehicle has GNSS
-    Coordinates coordinates     = 2;
+    Coordinates coordinates     = 6;
     // Sensor readings, does not include configuration
     // TODO: Sensors should be vehicle specific
-    Sensors sensors             = 3;
-    // System uptime in milliseconds
-    uint32 timestamp_ms         = 4;
-    // Sequence number of the telemetry message
-    // in the current session (since system start)
-    uint32 message_id           = 5;
+    Sensors sensors             = 7;
+    // System resources
+    System system               = 8;
 
-    // Future-proof
-    reserved 6, 7, 8;
-    
     // Vehicle specific telemetry
     oneof vehicle {
         CopterTelemetry copter  = 9;

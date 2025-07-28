@@ -1,0 +1,27 @@
+syntax = "proto3";
+package pb.mp;
+
+message CPU {
+    // cpu usage per core (use repeated)
+}
+
+message Memory {
+    // memory usage in bytes, in percentage
+}
+
+message Network {
+    // uplink, downlink
+}
+
+message OS {
+    // task time distribution
+}
+
+message System {
+    CPU cpu         = 1;
+    Memory memory   = 2;
+    Network network = 3;
+    OS os           = 4;
+
+    // add power usage
+}

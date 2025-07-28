@@ -2,7 +2,7 @@ syntax = "proto3";
 package pb.mp;
 
 import "mp/command/command.proto";
-import "mp/telemetry/log.proto";
+import "mp/logging/log.proto";
 import "mp/telemetry/telemetry.proto";
 
 // TODO: Remove vehicle specific telemetry and command
