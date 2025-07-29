@@ -2,15 +2,38 @@ syntax = "proto3";
 package pb.mp;
 
 message CPU {
-    // cpu usage per core (use repeated)
+    // Ratio of CPU executing a non-idle task to total time
+    // TODO: Change to repeated for per-core data
+    // TODO: Define the time interval
+    float usage     = 1;
+    // Clock frequency in hertz
+    uint32 clock    = 2;
 }
 
 message Memory {
-    // memory usage in bytes, in percentage
+    // Amount of used memory in bytes
+    uint32 usage    = 1;
+    // Total memory in bytes - not sent each time since
+    // it probably does not change
+    uint32 capacity = 2;
 }
 
-message Network {
-    // uplink, downlink
+message DataRate {
+    // Receive rate in bits per second
+    uint32 rx       = 1;
+    // Transmit rate in bits per second
+    uint32 tx       = 2;
+}
+
+message Task {
+    // Unique ID
+    uint32 id       = 1;
+    // CPU usage ratio
+    float cpu_usage = 2;
+    // Task stack usage
+    Memory stack    = 3;
+    // Usage of the global heap
+    Memory heap     = 4;
 }
 
 message OS {
@@ -19,9 +42,10 @@ message OS {
 
 message System {
     CPU cpu         = 1;
-    Memory memory   = 2;
-    Network network = 3;
+    Memory heap     = 2;
+    DataRate link   = 3;
     OS os           = 4;
 
     // add power usage
+    // add per-task data (repeated)
 }
