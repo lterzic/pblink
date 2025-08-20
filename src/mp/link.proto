@@ -15,8 +15,12 @@ import "mp/telemetry/telemetry.proto";
 message UplinkMessage {
     // Uplink message sequence id
     uint32 message_id   = 1;
-    // Destination (vehicle) ID, Source (GCS) ID, Session ID, ...
-    reserved 2 to 7;
+    // Source (GCS) ID
+    uint32 src_id       = 2;
+    // Destination (vehicle) ID
+    uint32 dest_id      = 3;
+    // Session ID (per vehicle), ...
+    reserved 4 to 7;
 
     oneof payload {
         // Input command
@@ -30,8 +34,12 @@ message UplinkMessage {
 message DownlinkMessage {
     // Downlink message sequence id
     uint32 message_id   = 1;
-    // Destination (vehicle) ID, Source (GCS) ID, Session ID, ...
-    reserved 2 to 7;
+    // Source (vehicle) ID
+    uint32 src_id       = 2;
+    // Destination (GCS) ID
+    uint32 dest_id      = 3;
+    // Session ID (per vehicle), ...
+    reserved 4 to 7;
 
     oneof payload {
         Telemetry telemetry = 8;
