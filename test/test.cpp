@@ -1,10 +1,9 @@
 #include <iostream>
-#include "mpsim/bridge.pb.h"
+#include "mp/link.pb.h"
 
 int main()
 {
-    pb::mpsim::Response response;
-    const auto& msg = response.read_state().state();
-    std::cout << msg.has_acceleration() << std::endl;
+    pb::mp::DownlinkMessage msg;
+    std::cout << msg.telemetry().sensors().has_accelerometer() << std::endl;
     return 0;
 }
