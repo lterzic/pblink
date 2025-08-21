@@ -1,9 +1,9 @@
 syntax = "proto3";
-package pb.mp;
+package pb.mp.link;
 
-import "mp/command/command.proto";
-import "mp/logging/log.proto";
-import "mp/telemetry/telemetry.proto";
+import "link/command/command.proto";
+import "link/logging/log.proto";
+import "link/telemetry/telemetry.proto";
 
 // TODO: Remove vehicle specific telemetry and command
 // messages from Telemetry and Command, and define for

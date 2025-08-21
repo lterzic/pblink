@@ -1,7 +1,7 @@
 syntax = "proto3";
-package pb.mp;
+package pb.mp.link;
 
-import "mp/telemetry/actuator.proto";
+import "link/telemetry/actuator.proto";
 
 message QuadcopterActuators {
     Motor fl = 1;

@@ -1,7 +1,7 @@
 syntax = "proto3";
-package pb.mp;
+package pb.mp.link;
 
-import "mp/vehicles/copter_command.proto";
+import "link/vehicles/copter_command.proto";
 
 message Command {
     // Future-proof

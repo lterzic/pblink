@@ -1,11 +1,11 @@
 syntax = "proto3";
-package pb.mp;
+package pb.mp.link;
 
 import "common/types.proto";
 import "common/state.proto";
-import "mp/telemetry/sensor.proto";
-import "mp/telemetry/system.proto";
-import "mp/vehicles/copter_telemetry.proto";
+import "link/telemetry/sensor.proto";
+import "link/telemetry/system.proto";
+import "link/vehicles/copter_telemetry.proto";
 
 message Telemetry {
     // System uptime in milliseconds

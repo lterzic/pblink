@@ -1,9 +1,9 @@
 #include <iostream>
-#include "mp/link.pb.h"
+#include "link/link.pb.h"
 
 int main()
 {
-    pb::mp::DownlinkMessage msg;
+    pb::mp::link::DownlinkMessage msg;
     std::cout << msg.telemetry().sensors().has_accelerometer() << std::endl;
     return 0;
 }
