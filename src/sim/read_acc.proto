@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mpsim;
+package pb.mp.sim;
 
 import "common/types.proto";
 
@@ -8,5 +8,5 @@ message RequestReadAcc {
 }
 
 message ResponseReadAcc {
-    mp.Vector3f acc = 1;
+    Vector3f acc = 1;
 }

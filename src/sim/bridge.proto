@@ -1,10 +1,10 @@
 syntax = "proto3";
-package pb.mpsim;
+package pb.mp.sim;
 
-import "mpsim/read_acc.proto";
-import "mpsim/read_gyro.proto";
-import "mpsim/read_state.proto";
-import "mpsim/write_motor.proto";
+import "sim/read_acc.proto";
+import "sim/read_gyro.proto";
+import "sim/read_state.proto";
+import "sim/write_motor.proto";
 
 message Request {
     reserved 1, 2, 3, 4; // in case extra data is needed in the future to match requests to responses
