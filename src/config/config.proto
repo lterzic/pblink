@@ -1,0 +1,10 @@
+syntax = "proto3";
+package pb.mp.config;
+
+message Config {
+    // vehicle id
+    // sensor bias
+    // encryption key
+    // telemetry period
+    // pid coefficients
+}
