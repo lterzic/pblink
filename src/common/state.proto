@@ -1,7 +1,7 @@
 syntax = "proto3";
 package pb.mp;
 
-import "mp/common/types.proto";
+import "common/types.proto";
 
 // Describes vehicle mechanics
 // TODO: Extend for a non-rigid body vehicle, define

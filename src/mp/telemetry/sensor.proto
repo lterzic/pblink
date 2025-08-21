@@ -1,7 +1,7 @@
 syntax = "proto3";
 package pb.mp;
 
-import "mp/common/types.proto";
+import "common/types.proto";
 
 // TODO: Add PowerSource as a universal measure
 // power (energy) for batteries and fuel

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package pb.mpsim;
 
-import "mp/telemetry/state.proto";
+import "common/state.proto";
 
 message RequestReadState {
 
