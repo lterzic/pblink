@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mp.link;
+package mp.pb.link;
 
 // 3-way handshake to establish a connection
 

@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mp.sim;
+package mp.pb.sim;
 
 import "sim/read_acc.proto";
 import "sim/read_gyro.proto";

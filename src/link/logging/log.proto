@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mp.link;
+package mp.pb.link;
 
 enum LogLevel {
     LOG_LEVEL_UNKNOWN   = 0;

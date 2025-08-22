@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mp.config;
+package mp.pb.config;
 
 message Config {
     // vehicle id

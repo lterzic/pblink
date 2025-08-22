@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mp.sim;
+package mp.pb.sim;
 
 import "common/types.proto";
 

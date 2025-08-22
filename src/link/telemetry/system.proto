@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mp.link;
+package mp.pb.link;
 
 message CPU {
     // Ratio of CPU executing a non-idle task to total time

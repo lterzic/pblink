@@ -3,7 +3,7 @@
 
 int main()
 {
-    pb::mp::link::DownlinkMessage msg;
+    mp::pb::link::DownlinkMessage msg;
     std::cout << msg.telemetry().sensors().has_accelerometer() << std::endl;
     return 0;
 }

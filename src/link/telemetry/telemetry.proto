@@ -1,5 +1,5 @@
 syntax = "proto3";
-package pb.mp.link;
+package mp.pb.link;
 
 import "common/types.proto";
 import "common/state.proto";
