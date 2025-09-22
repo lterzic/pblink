@@ -1,0 +1,49 @@
+syntax = "proto3";
+package mp.pb.telemetry;
+
+import "telemetry/channel.proto";
+
+message Uplink {
+    reserved 1 to 8;
+
+    message ChannelRequest {
+        uint32 channel = 1;
+        uint32 source = 2;
+        // Add rate enum (send frequency)
+    }
+
+    oneof payload {
+        ChannelRequest channel_request = 9;
+    }
+}
+
+message Downlink {
+    reserved 1 to 8;
+
+    // Sent on start or on request with information
+    // about available topics, frequencies, ...
+    message Broadcast {
+        // List of available channel payload tags.
+        // Note that there can be multiple source for the
+        // same channel, so one tag can appear multiple times
+        // in this list
+        repeated uint32 channels = 1;
+    }
+
+    message Telemetry {
+        // System uptime in milliseconds
+        uint32 timestamp_ms = 1;
+        // In case of additional metadata like
+        // telemetry specific message id, ...
+        reserved 2 to 8;
+
+        // All channels which were ready for sending at
+        // the time of creating this message
+        repeated Channel channels = 9;
+    }
+    
+    oneof payload {
+        Broadcast broadcast = 9;
+        Telemetry telemetry = 10;
+    }
+}

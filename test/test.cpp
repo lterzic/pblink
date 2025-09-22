@@ -4,6 +4,6 @@
 int main()
 {
     mp::pb::link::DownlinkMessage msg;
-    std::cout << msg.telemetry().sensors().has_accelerometer() << std::endl;
+    std::cout << msg.telemetry().telemetry().channels_size();
     return 0;
 }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+package mp.pb.telemetry;
+
+import "telemetry/actuators.proto";
+
+message QuadcopterActuators {
+    Motor fl = 1;
+    Motor fr = 2;
+    Motor bl = 3;
+    Motor br = 4;
+}

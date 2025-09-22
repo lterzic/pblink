@@ -1,0 +1,24 @@
+syntax = "proto3";
+package mp.pb.telemetry;
+
+import "common/state.proto";
+import "common/types.proto";
+import "telemetry/copter.proto";
+import "telemetry/sensors.proto";
+import "telemetry/system.proto";
+
+message Channel {
+    // Each channel can have multiple sources. This
+    // is used to distinguish them.
+    uint32 source = 1;
+
+    reserved 2 to 8;
+    // TODO: Split sensors, system, add vehicle specific data
+    oneof payload {
+        State state = 9;
+        Coordinates coordinates = 10;
+        Sensors sensors = 11;
+        System system = 12;
+        QuadcopterActuators quadcopter_actuators = 13;
+    }
+}

@@ -1,9 +1,7 @@
 syntax = "proto3";
 package mp.pb.link;
 
-import "link/command/command.proto";
-import "link/logging/log.proto";
-import "link/telemetry/telemetry.proto";
+import "telemetry/telemetry.proto";
 
 // TODO: Remove vehicle specific telemetry and command
 // messages from Telemetry and Command, and define for
@@ -20,11 +18,11 @@ message UplinkMessage {
     // Destination (vehicle) ID
     uint32 dest_id      = 3;
     // Session ID (per vehicle), ...
-    reserved 4 to 7;
+    reserved 4 to 8;
 
     oneof payload {
-        // Input command
-        Command command = 8;
+        // Telemetry uplink message
+        telemetry.Uplink telemetry = 9;
         // TODO: Mission upload, subscribe to sensor, set configuration, ...
     }
 }
@@ -39,10 +37,9 @@ message DownlinkMessage {
     // Destination (GCS) ID
     uint32 dest_id      = 3;
     // Session ID (per vehicle), ...
-    reserved 4 to 7;
+    reserved 4 to 8;
 
     oneof payload {
-        Telemetry telemetry = 8;
-        Log log             = 9;
+        telemetry.Downlink telemetry = 9;
     }
 }
