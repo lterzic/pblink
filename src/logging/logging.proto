@@ -1,0 +1,24 @@
+syntax = "proto3";
+package mp.pb.logging;
+
+import "logging/log.proto";
+
+message Uplink {
+    message SetLevel {
+        LogLevel level = 1;
+    }
+
+    reserved 1 to 8;
+
+    oneof payload {
+        SetLevel set_level = 9;
+    }
+}
+
+message Downlink {
+    reserved 1 to 8;
+
+    oneof payload {
+        Log log = 9;
+    }
+}

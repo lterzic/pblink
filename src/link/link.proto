@@ -1,12 +1,9 @@
 syntax = "proto3";
 package mp.pb.link;
 
+import "copter/copter.proto";
+import "logging/logging.proto";
 import "telemetry/telemetry.proto";
-
-// TODO: Remove vehicle specific telemetry and command
-// messages from Telemetry and Command, and define for
-// each vehicle <Vehicle>Uplink and <Vehicle>Downlink
-// and add to payloads here
 
 // Top-level message wrapper for messages from
 // GCS to the vehicle
@@ -21,9 +18,10 @@ message UplinkMessage {
     reserved 4 to 8;
 
     oneof payload {
-        // Telemetry uplink message
         telemetry.Uplink telemetry = 9;
-        // TODO: Mission upload, subscribe to sensor, set configuration, ...
+        logging.Uplink logging = 10;
+        copter.Uplink copter = 11;
+        // TODO: Mission upload, set configuration, ...
     }
 }
 
@@ -41,5 +39,6 @@ message DownlinkMessage {
 
     oneof payload {
         telemetry.Downlink telemetry = 9;
+        logging.Downlink logging = 10;
     }
 }

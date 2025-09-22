@@ -1,0 +1,29 @@
+syntax = "proto3";
+package mp.pb.copter;
+
+import "common/types.proto";
+
+message Uplink {
+    reserved 1 to 8;
+
+    message SetAngularVelocity {
+        // Angular velocity in FRD coordinates in rad/s
+        Vector3f angular_velocity = 1;
+        // Upwards thrust in Newtons
+        float thrust = 2;
+    }
+    
+    message SetLinearVelocity {
+        // Velocity in NED coordinates in m/s
+        Vector3f linear_velocity = 1;
+        // Direction in radians with 0 as North, increasing CW
+        float direction = 2;
+    }
+
+    // TODO: Set control algorithm (PID, LQR, ...), set parameters
+
+    oneof payload {
+        SetAngularVelocity set_angular_velocity  = 9;
+        SetLinearVelocity set_linear_velocity    = 10;
+    }
+}
