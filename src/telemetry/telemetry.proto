@@ -23,11 +23,15 @@ message Downlink {
     // Sent on start or on request with information
     // about available topics, frequencies, ...
     message Broadcast {
-        // List of available channel payload tags.
-        // Note that there can be multiple source for the
-        // same channel, so one tag can appear multiple times
-        // in this list
-        repeated uint32 channels = 1;
+        // Number of producers for each channel
+        message ChannelSources {
+            uint32 channel = 1;
+            uint32 sources = 2;
+        }
+        
+        // List of available channel payload tags and the number of sources
+        // TODO: Can be replaced with map<uint32, uint32> channels = 1;
+        repeated ChannelSources channels = 1;
     }
 
     message Telemetry {
