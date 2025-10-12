@@ -1,13 +1,13 @@
 syntax = "proto3";
 package mp.pb.link;
 
-import "copter/copter.proto";
-import "logging/logging.proto";
-import "telemetry/telemetry.proto";
+import "copter/copter_link.proto";
+import "logging/logging_link.proto";
+import "telemetry/telemetry_link.proto";
 
 // Top-level message wrapper for messages from
 // GCS to the vehicle
-message UplinkMessage {
+message Uplink {
     // Uplink message sequence id
     uint32 message_id   = 1;
     // Source (GCS) ID
@@ -27,7 +27,7 @@ message UplinkMessage {
 
 // Top-level message wrapper for messages from
 // the vehicle to GCS
-message DownlinkMessage {
+message Downlink {
     // Downlink message sequence id
     uint32 message_id   = 1;
     // Source (vehicle) ID

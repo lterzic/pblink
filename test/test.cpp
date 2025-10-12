@@ -3,7 +3,7 @@
 
 int main()
 {
-    mp::pb::link::DownlinkMessage msg;
+    mp::pb::link::Downlink msg;
     std::cout << msg.telemetry().telemetry().channels_size();
     return 0;
 }
