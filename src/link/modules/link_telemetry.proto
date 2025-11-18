@@ -1,0 +1,17 @@
+syntax = "proto3";
+package mp.pb.link;
+
+import "telemetry/telemetry.proto";
+
+message TelemetryUplink {
+    oneof payload {
+        telemetry.Subscribe subscribe = 1;
+    }
+}
+
+message TelemetryDownlink {
+    oneof payload {
+        telemetry.Broadcast broadcast = 1;
+        telemetry.Telemetry telemetry = 2;
+    }
+}

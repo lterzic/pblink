@@ -2,21 +2,20 @@ syntax = "proto3";
 package mp.pb.logging;
 
 enum LogLevel {
-    LOG_LEVEL_UNKNOWN   = 0;
-    LOG_LEVEL_DEBUG     = 1;
-    LOG_LEVEL_INFO      = 2;
-    LOG_LEVEL_WARNING   = 3;
-    LOG_LEVEL_ERROR     = 4;
+    LOG_LEVEL_DEBUG     = 0;
+    LOG_LEVEL_INFO      = 1;
+    LOG_LEVEL_WARNING   = 2;
+    LOG_LEVEL_ERROR     = 3;
 }
 
 message Log {
     // Log severity (info, warning, ...)
     LogLevel level      = 1;
-    // Message
-    string message      = 2;
     // System uptime in milliseconds
-    uint32 timestamp_ms = 3;
+    uint32 timestamp_ms = 2;
     // Log message sequence number (in
     // the current session)
-    uint32 message_id   = 4;
+    uint32 message_id   = 3;
+    // Log text
+    string text         = 4;
 }

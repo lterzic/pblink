@@ -1,0 +1,18 @@
+syntax = "proto3";
+package mp.pb.copter;
+
+import "common/types.proto";
+
+message SetAngularVelocity {
+    // Angular velocity in FRD coordinates in rad/s
+    Vector3f angular_velocity = 1;
+    // Upwards thrust in Newtons
+    float thrust = 2;
+}
+
+message SetLinearVelocity {
+    // Velocity in NED coordinates in m/s
+    Vector3f linear_velocity = 1;
+    // Direction in radians with 0 as North, increasing CW
+    float direction = 2;
+}

@@ -1,9 +1,9 @@
 syntax = "proto3";
 package mp.pb.link;
 
-import "copter/copter_link.proto";
-import "logging/logging_link.proto";
-import "telemetry/telemetry_link.proto";
+import "link/modules/link_copter.proto";
+import "link/modules/link_logging.proto";
+import "link/modules/link_telemetry.proto";
 
 // Top-level message wrapper for messages from
 // GCS to the vehicle
@@ -18,9 +18,9 @@ message Uplink {
     reserved 4 to 8;
 
     oneof payload {
-        telemetry.Uplink telemetry = 9;
-        logging.Uplink logging = 10;
-        copter.Uplink copter = 11;
+        TelemetryUplink telemetry = 9;
+        LoggingUplink logging = 10;
+        CopterUplink copter = 11;
         // TODO: Mission upload, set configuration, ...
     }
 }
@@ -38,7 +38,7 @@ message Downlink {
     reserved 4 to 8;
 
     oneof payload {
-        telemetry.Downlink telemetry = 9;
-        logging.Downlink logging = 10;
+        TelemetryDownlink telemetry = 9;
+        LoggingDownlink logging = 10;
     }
 }

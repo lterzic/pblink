@@ -3,7 +3,7 @@ package mp.pb.telemetry;
 
 import "common/state.proto";
 import "common/types.proto";
-import "telemetry/copter.proto";
+import "telemetry/actuators.proto";
 import "telemetry/sensors.proto";
 import "telemetry/system.proto";
 
@@ -19,6 +19,6 @@ message Channel {
         Coordinates coordinates = 10;
         Sensors sensors = 11;
         System system = 12;
-        QuadcopterActuators quadcopter_actuators = 13;
+        Quadcopter quadcopter = 13;
     }
 }

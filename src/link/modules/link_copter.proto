@@ -1,0 +1,11 @@
+syntax = "proto3";
+package mp.pb.link;
+
+import "copter/copter.proto";
+
+message CopterUplink {
+    oneof payload {
+        copter.SetAngularVelocity set_angular_velocity = 1;
+        copter.SetLinearVelocity set_linear_velocity = 2;
+    }
+}
