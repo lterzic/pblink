@@ -8,6 +8,15 @@ enum LogLevel {
     LOG_LEVEL_ERROR     = 3;
 }
 
+message LogArg {
+    oneof value {
+        int32 int32v = 1;
+        uint32 uint32v = 2;
+        float floatv = 3;
+        string stringv = 4;
+    }
+}
+
 message Log {
     // Log severity (info, warning, ...)
     LogLevel level      = 1;
@@ -16,6 +25,8 @@ message Log {
     // Log message sequence number (in
     // the current session)
     uint32 message_id   = 3;
-    // Log text
-    string text         = 4;
+    // Log format string based on std::format
+    string format       = 4;
+    // Zero or more arguments
+    repeated LogArg args = 5;
 }
