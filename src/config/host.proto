@@ -1,0 +1,26 @@
+syntax = "proto3";
+package mp.pb.config;
+
+import "config/config.proto";
+
+// Sent on startup without knowing if the host
+// is present, if no response within the indicated
+// timeout, config is loaded from storage if available,
+// else default is used.
+message ConfigHostRequest {
+    uint32 request_timeout_ms = 1;
+    Config current_config = 2;
+}
+
+// Host sends this to notify it is present, and that
+// the device should wait for further messages.
+message ConfigHostAck {
+
+}
+
+// Host can now send a new configuration (once or multiple times),
+// and can tell the device to finish this process.
+message ConfigHostUpdate {
+    Config config = 1;
+    bool complete = 2;
+}
