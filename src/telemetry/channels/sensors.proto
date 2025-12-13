@@ -44,9 +44,3 @@ message Gyroscope {
 
 // TODO: Add magnetometer, GPS, time of flight, antenna?
 
-message Sensors {
-    Battery battery             = 1;
-    Barometer barometer         = 2;
-    Accelerometer accelerometer = 3;
-    Gyroscope gyroscope         = 4;
-}

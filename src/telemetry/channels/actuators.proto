@@ -15,10 +15,3 @@ message Servo {
     // Servo input angle in radians
     float input_angle   = 2;
 }
-
-message Quadcopter {
-    Motor fl = 1;
-    Motor fr = 2;
-    Motor bl = 3;
-    Motor br = 4;
-}

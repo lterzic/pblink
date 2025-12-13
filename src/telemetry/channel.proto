@@ -3,22 +3,40 @@ package mp.pb.telemetry;
 
 import "common/state.proto";
 import "common/types.proto";
-import "telemetry/actuators.proto";
-import "telemetry/sensors.proto";
-import "telemetry/system.proto";
+import "telemetry/channels/actuators.proto";
+import "telemetry/channels/sensors.proto";
+import "telemetry/channels/system.proto";
 
 message Channel {
-    // Each channel can have multiple sources. This
-    // is used to distinguish them.
-    uint32 source = 1;
-
+    // Globally unique channel id
+    uint32 id = 1;
+    // Future metadata
     reserved 2 to 8;
-    // TODO: Split sensors, system, add vehicle specific data
+
+    // Future common channels
+    reserved 11 to 20;
+    // Future sensor types
+    reserved 25 to 40;
+    // Future actuator types
+    reserved 43 to 60;
+    // Future system types
+    reserved 65 to 80;
     oneof payload {
+        // Common
         State state = 9;
         Coordinates coordinates = 10;
-        Sensors sensors = 11;
-        System system = 12;
-        Quadcopter quadcopter = 13;
+        // Sensors
+        Battery battery = 21;
+        Accelerometer accelerometer = 22;
+        Gyroscope gyroscope = 23;
+        Barometer barometer = 24;
+        // Actuators
+        Motor motor = 41;
+        Servo servo = 42;
+        // System
+        CPUCore cpu_core = 61;
+        Memory memory = 62;
+        Task task = 63;
+        Kernel kernel = 64;
     }
 }
