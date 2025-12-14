@@ -1,7 +1,7 @@
 syntax = "proto3";
 package mp.pb.link;
 
-import "link/modules/copter.proto";
+import "link/modules/control.proto";
 import "link/modules/logging.proto";
 import "link/modules/telemetry.proto";
 
@@ -20,8 +20,7 @@ message Uplink {
     oneof payload {
         TelemetryUplink telemetry = 9;
         LoggingUplink logging = 10;
-        CopterUplink copter = 11;
-        // TODO: Mission upload, set configuration, ...
+        ControlUplink control = 11;
     }
 }
 
@@ -40,5 +39,6 @@ message Downlink {
     oneof payload {
         TelemetryDownlink telemetry = 9;
         LoggingDownlink logging = 10;
+        ControlDownlink control = 11;
     }
 }

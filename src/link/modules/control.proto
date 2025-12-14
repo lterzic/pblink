@@ -1,0 +1,111 @@
+syntax = "proto3";
+package mp.pb.link;
+
+import "common/types.proto";
+
+message RoverManual {
+    // Throttle in range [0, 1]
+    float throttle = 1;
+    // Curvature (k) is the inverse of the (desired) turn radius, in units
+    // of 1/m. No turn (heading straight) is represented by k = 0. Positive
+    // k indicates turn left, negative k indicates turn right.
+    float curvature = 2;
+    // Braking pressure in range [0, 1]
+    float brake = 3;
+}
+
+message CopterManual {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Torque in local FRD coordinates, in Newton-meters
+    Vector3f torque = 2;
+}
+
+message CopterAttitude {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Target copter body UP vector in the inertial FRD coordinates, can't be 0
+    Vector3f up = 2;
+}
+
+message CopterAngularVelocity {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Angular velocity in FRD coordinates in rad/s
+    Vector3f angular_velocity = 2;
+}
+
+message CopterLinearVelocity {
+    // Direction in radians with 0 as North, increasing CW
+    float direction = 1;
+    // Velocity in NED coordinates in m/s
+    Vector3f linear_velocity = 2;
+}
+
+message PlaneManual {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Torque per dynamic pressure (1/2 density * velocity^2) in
+    // local FRD coordinates. Units of N*m/Pa
+    Vector3f torque_per_dp = 2;
+}
+
+message PlaneAutomatic {
+    // Ground speed (x, y) and climb rate (z), in m/s
+    Vector3f ground_speed_climb_rate = 1;
+    // Heading in radians, 0 being North, increasing CW
+    float heading = 2;
+}
+
+// Used for taxi and takeoff, vehicle should automatically
+// switch to only PlaneManual once off ground
+message PlaneTaxi {
+    // Ground steering as in a rover
+    // Thrust here used only if wheels can generate
+    // their own power, else use plane controls
+    RoverManual ground = 1;
+    // Manual plane control to generate power and lift
+    // for takeoff and taxiing
+    PlaneManual plane = 2;
+}
+
+message ControlMode {
+    message Disarmed {}
+
+    oneof controls {
+        RoverManual rover_manual = 1;
+        CopterManual copter_manual = 2;
+        CopterAttitude copter_attitude = 3;
+        CopterAngularVelocity copter_angular_velocity = 4;
+        CopterLinearVelocity copter_linear_velocity = 5;
+        PlaneManual plane_manual = 6;
+        PlaneAutomatic plane_automatic = 7;
+        PlaneTaxi plane_taxi = 8;
+        Disarmed disarmed = 15;
+    }
+}
+
+message ControlUplink {
+    // Future metadata
+    reserved 1 to 8;
+
+    message SetControlMode {
+        // Tag of the desired ControlMode oneof
+        uint32 mode = 1;
+    }
+
+    oneof payload {
+        SetControlMode set_control_mode = 9;
+    }
+}
+
+message ControlDownlink {
+    message ControlModeSwitch {
+        uint32 current = 1;
+        uint32 previous = 2;
+    }
+
+    oneof payload {
+        ControlModeSwitch control_mode_switch = 1;
+    }
+}
