@@ -1,0 +1,38 @@
+syntax = "proto3";
+package mp.pb.link;
+
+import "telemetry/channel.proto";
+import "telemetry/telemetry.proto";
+
+message TelemetryUplink {
+    // Request a channel to be periodically sent
+    message Subscribe {
+        // Channel ID
+        uint32 channel_id = 1;
+        // TODO: Channel rate
+    }
+
+    oneof payload {
+        Subscribe subscribe = 1;
+    }
+}
+
+message TelemetryDownlink {
+    // Sent on start or on request with information
+    // about available channels, frequencies, ...
+    message Broadcast {
+        // List of available channels and additional data
+        // that they might provide. Additional broadcast data
+        // is currently placed into the same message as regular
+        // channel data, starting from tag 100
+        // TODO: Channel payloads can be split into regular
+        // Channel messages and ChannelBroadcast messages
+        repeated telemetry.Channel channels = 1;
+        // TODO: Supported telemetry rates enum
+    }
+    
+    oneof payload {
+        Broadcast broadcast = 1;
+        telemetry.Telemetry telemetry = 2;
+    }
+}

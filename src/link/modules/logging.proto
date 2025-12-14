@@ -16,6 +16,5 @@ message LoggingUplink {
 message LoggingDownlink {
     oneof payload {
         logging.Log log = 1;
-        bytes log_raw = 2;
     }
 }

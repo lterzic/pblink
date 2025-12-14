@@ -1,9 +1,9 @@
 syntax = "proto3";
 package mp.pb.link;
 
-import "link/modules/link_copter.proto";
-import "link/modules/link_logging.proto";
-import "link/modules/link_telemetry.proto";
+import "link/modules/copter.proto";
+import "link/modules/logging.proto";
+import "link/modules/telemetry.proto";
 
 // Top-level message wrapper for messages from
 // GCS to the vehicle
