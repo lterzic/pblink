@@ -24,22 +24,17 @@ message Barometer {
 }
 
 message Accelerometer {
-    // Raw acceleration data as read from the sensor
-    Vector3f raw        = 1;
-    // Acceleration as used by the flight controller
-    // in the global reference frame in units of meter/second^2
-    Vector3f corrected  = 2;
+    // Acceleration in NED coordinate system in m/s^2
+    Vector3f acceleration       = 1;
+    // Raw data as read from the accelerometer
+    Vector3f raw_acceleration   = 2;
 }
 
 message Gyroscope {
-    // Raw angular velocity data as read from the sensor
-    Vector3f raw        = 1;
-    // Angular velocity as used by the flight controller
-    // in the body frame in units of radian/second
-    Vector3f corrected  = 2;
-    // Current drift determined by the flight controller
-    // Same units as the corrected value
-    Vector3f drift      = 3;
+    // Angular velocity in the body FRD coordinate system in rad/s
+    Vector3f angular_velocity       = 1;
+    // Raw data as read from the gyroscope
+    Vector3f raw_angular_velocity   = 2;
 }
 
 // TODO: Add magnetometer, GPS, time of flight, antenna?

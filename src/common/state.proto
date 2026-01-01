@@ -3,11 +3,8 @@ package mp.pb;
 
 import "common/types.proto";
 
-// Describes vehicle mechanics
-// TODO: Extend for a non-rigid body vehicle, define
-// center of mass vs body fixed point position, rotation
-// TODO: Rename to mechanics/kinematics/etc.
-message State {
+// Kinematics of a point, usually center of mass (CoM)
+message Kinematics {
     // Position relative to the starting point in meters
     // Uses global NED coordinate system
     Vector3f position           = 1;
@@ -20,4 +17,21 @@ message State {
     Vector4f rotation           = 4;
     // Angular velocity in the body (non-intertial) frame in radians per second
     Vector3f angular_velocity   = 5;
+}
+
+// State is a combination of body kinematics and other
+// environment variables determined usually by state estimation
+message State {
+    // Kinematics of the center of mass of the vehicle
+    Kinematics kinematics       = 1;
+    // Estimated drift of the gyroscope used by the state
+    // estimator in rad/s
+    Vector3f gyroscope_drift    = 2;
+    // Whether the body is grounded, ie. has a normal force
+    // preventing it from accelerating in gravity direction
+    bool grounded               = 3;
+
+    // TODO: Add CoM location relative to a fixed origin,
+    // mass, moment of inertia, estimated wind (or surrounding
+    // fluid movement in case of water vehicles)
 }
