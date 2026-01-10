@@ -7,19 +7,21 @@ message ControlUplink {
     // Future metadata
     reserved 1 to 8;
 
-    message RequestTransition {
-        // If a transition can be made to the requested
-        // control type, the initial command is used to
-        // prevent unexpected behavior
-        control.Controls initial = 1;
-    }
-
+    // Separate payloads are used to request a transition to
+    // a different control mode than to update the values of
+    // the same mode to prevent accidental changes
     oneof payload {
-        RequestTransition request_transition = 9;
+        control.Controls request_transition = 9;
+        control.Controls update_controls = 10;
     }
 }
 
 message ControlDownlink {
+    message Broadcast {
+        // Tell the user which control modes are supported
+        repeated control.Controls supported_controls = 1;
+    }
+
     message Transition {
         // Current (after) control is used to sync the UI
         // with the new control mode on the vehicle
@@ -28,6 +30,7 @@ message ControlDownlink {
     }
 
     oneof payload {
-        Transition transition = 1;
+        Broadcast broadcast = 1;
+        Transition transition = 2;
     }
 }
