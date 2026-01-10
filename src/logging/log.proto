@@ -30,3 +30,7 @@ message Log {
     // Zero or more arguments
     repeated LogArg args = 5;
 }
+
+// TODO: Add message LogFormatSync which sends all of the
+// format strings with identifying keys to the host on init,
+// to allow later sending only format key and args
