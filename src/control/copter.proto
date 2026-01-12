@@ -1,0 +1,41 @@
+syntax = "proto3";
+package mp.pb.control;
+
+import "common/types.proto";
+
+message CopterManual {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Torque in local FRD coordinates, in Newton-meters
+    Vector3f torque = 2;
+}
+
+message CopterAngularVelocity {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Angular velocity in FRD coordinates in rad/s
+    Vector3f angular_velocity = 2;
+}
+
+message CopterAttitude {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Target copter body UP vector in the inertial FRD coordinates, can't be 0
+    Vector3f up = 2;
+}
+
+message CopterLinearVelocity {
+    // Direction in radians with 0 as North, increasing CW
+    float direction = 1;
+    // Velocity in NED coordinates in m/s
+    Vector3f linear_velocity = 2;
+}
+
+message Copter {
+    oneof mode {
+        CopterManual manual = 1;
+        CopterAngularVelocity angular_velocity = 2;
+        CopterAttitude attitude = 3;
+        CopterLinearVelocity linear_velocity = 4;
+    }
+}

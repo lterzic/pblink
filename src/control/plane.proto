@@ -1,0 +1,40 @@
+syntax = "proto3";
+package mp.pb.control;
+
+import "common/types.proto";
+import "control/rover.proto";
+
+message PlaneManual {
+    // Thrust in Newtons
+    float thrust = 1;
+    // Torque per dynamic pressure (1/2 density * velocity^2) in
+    // local FRD coordinates. Units of N*m/Pa
+    Vector3f torque_per_dp = 2;
+}
+
+message PlaneAuto {
+    // Ground speed (x, y) and climb rate (z), in m/s
+    Vector3f ground_speed_climb_rate = 1;
+    // Heading in radians, 0 being North, increasing CW
+    float heading = 2;
+}
+
+// Used for taxi and takeoff, vehicle should automatically
+// switch to only PlaneManual once off ground
+message PlaneTaxi {
+    // Ground steering as in a rover
+    // Thrust here used only if wheels can generate
+    // their own power, else use plane controls
+    RoverManual ground = 1;
+    // Manual plane control to generate power and lift
+    // for takeoff and taxiing
+    PlaneManual plane = 2;
+}
+
+message Plane {
+    oneof mode {
+        PlaneManual manual = 1;
+        PlaneAuto autopilot = 2;
+        PlaneTaxi taxi = 3;
+    }
+}
