@@ -1,10 +1,14 @@
 syntax = "proto3";
 package mp.pb.config;
 
+import "config/modules/link.proto";
+import "config/modules/sensor.proto";
+
 message Config {
     // vehicle id
-    // sensor bias
-    // encryption key
     // telemetry period
     // pid coefficients
+
+    LinkConfig link = 1;
+    SensorConfig sensor = 2;
 }
