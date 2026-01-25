@@ -1,7 +1,7 @@
 syntax = "proto3";
 package mp.pb;
 
-import "common/types.proto";
+import "common/math.proto";
 
 // Kinematics of a point, usually center of mass (CoM)
 message Kinematics {
@@ -14,9 +14,19 @@ message Kinematics {
     Vector3f acceleration       = 3;
     // Rotation quaternion mapping the local body frame to the global frame
     // Always normalized (magnitude = 1)
-    Vector4f rotation           = 4;
+    Quaternionf rotation        = 4;
     // Angular velocity in the body (non-intertial) frame in radians per second
     Vector3f angular_velocity   = 5;
+}
+
+// WGS 84 coordinates
+message Coordinates {
+    // Longitude in degrees
+    float longitude = 1;
+    // Latitude in degrees
+    float latitude  = 2;
+    // Altitude above sea level in meters
+    float altitude  = 3;
 }
 
 // State is a combination of body kinematics and other
@@ -24,12 +34,14 @@ message Kinematics {
 message State {
     // Kinematics of the center of mass of the vehicle
     Kinematics kinematics       = 1;
+    // Coordinates if the system has GNSS
+    Coordinates coordinates     = 2;
     // Estimated drift of the gyroscope used by the state
     // estimator in rad/s
-    Vector3f gyroscope_drift    = 2;
+    Vector3f gyroscope_drift    = 3;
     // Whether the body is grounded, ie. has a normal force
     // preventing it from accelerating in gravity direction
-    bool grounded               = 3;
+    optional bool grounded      = 4;
 
     // TODO: Add CoM location relative to a fixed origin,
     // mass, moment of inertia, estimated wind (or surrounding

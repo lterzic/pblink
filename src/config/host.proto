@@ -1,6 +1,7 @@
 syntax = "proto3";
 package mp.pb.config;
 
+import "common/chrono.proto";
 import "config/config.proto";
 
 // Sent on startup without knowing if the host
@@ -8,7 +9,7 @@ import "config/config.proto";
 // timeout, config is loaded from storage if available,
 // else default is used.
 message ConfigHostRequest {
-    uint32 request_timeout_ms = 1;
+    Duration request_timeout = 1;
     Config current_config = 2;
 }
 

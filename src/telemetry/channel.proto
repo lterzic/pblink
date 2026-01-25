@@ -2,7 +2,6 @@ syntax = "proto3";
 package mp.pb.telemetry;
 
 import "common/state.proto";
-import "common/types.proto";
 import "telemetry/channels/actuators.proto";
 import "telemetry/channels/sensors.proto";
 import "telemetry/channels/system.proto";

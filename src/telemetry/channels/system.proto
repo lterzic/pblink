@@ -1,6 +1,8 @@
 syntax = "proto3";
 package mp.pb.telemetry;
 
+import "common/chrono.proto";
+
 message CPUCore {
     // Clock frequency in hertz
     uint32 clock = 1;
@@ -36,8 +38,8 @@ message Kernel {
     message TaskSwitchIn {
         // Task ID
         uint32 task_id = 1;
-        // Cycle count at switch
-        uint64 cycles = 2;
+        // Switch timestamp
+        Timestamp timestamp = 2;
     }
     // Total task switch count
     uint64 switch_count = 1;

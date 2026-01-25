@@ -1,7 +1,7 @@
 syntax = "proto3";
 package mp.pb.control;
 
-import "common/types.proto";
+import "common/math.proto";
 
 message CopterManual {
     // Thrust in Newtons

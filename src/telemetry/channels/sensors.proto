@@ -1,7 +1,7 @@
 syntax = "proto3";
 package mp.pb.telemetry;
 
-import "common/types.proto";
+import "common/math.proto";
 
 // TODO: Add PowerSource as a universal measure
 // power (energy) for batteries and fuel

@@ -1,12 +1,13 @@
 syntax = "proto3";
 package mp.pb.telemetry;
 
+import "common/chrono.proto";
 import "telemetry/channel.proto";
 
 // One or more channels with additional metadata like timestamp, ...
 message Telemetry {
     // Timestamp of starting the creation of this message
-    uint32 timestamp_ms = 1;
+    Timestamp timestamp = 1;
     // In case of additional metadata like
     // telemetry specific message id, ...
     reserved 2 to 8;

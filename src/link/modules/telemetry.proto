@@ -1,7 +1,6 @@
 syntax = "proto3";
 package mp.pb.link;
 
-import "telemetry/channel.proto";
 import "telemetry/telemetry.proto";
 
 message TelemetryUplink {
