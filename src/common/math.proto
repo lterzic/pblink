@@ -13,6 +13,10 @@ message Matrixf {
     repeated float data = 3;
 }
 
+message Matrix3f {
+    repeated float data = 1;
+}
+
 message Vector3f {
     float x = 1;
     float y = 2;

@@ -6,5 +6,5 @@ import "common/math.proto";
 message SensorConfig {
     Vector3f accelerometer_bias = 1;
     Vector3f magnetometer_hard_iron = 2;
-    Matrixf magnetometer_soft_iron = 3;
+    Matrix3f magnetometer_soft_iron = 3;
 }
