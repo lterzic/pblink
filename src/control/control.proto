@@ -20,3 +20,12 @@ message Controls {
         Disarmed disarmed = 15;
     }
 }
+
+message Aux {
+    oneof command {
+        LandingGear landing_gear = 1;
+        Flaps flaps = 2;
+        TransmissionShift transmission_shift = 3;
+        ParkingBrake parking_brake = 4;
+    }
+}

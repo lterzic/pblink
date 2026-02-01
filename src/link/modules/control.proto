@@ -13,6 +13,7 @@ message ControlUplink {
     oneof payload {
         control.Controls request_transition = 9;
         control.Controls update_controls = 10;
+        control.Aux aux_command = 11;
     }
 }
 

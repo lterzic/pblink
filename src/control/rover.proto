@@ -11,3 +11,13 @@ message RoverManual {
     // Braking pressure in range [0, 1]
     float brake = 3;
 }
+
+message TransmissionShift {
+    // True for up-shift
+    bool up_down = 1;
+}
+
+message ParkingBrake {
+    // Set the parking brake
+    bool activated = 1;
+}

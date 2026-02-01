@@ -30,3 +30,11 @@ message PlaneTaxi {
     // for takeoff and taxiing
     PlaneManual plane = 2;
 }
+
+message LandingGear {
+    bool down = 1;
+}
+
+message Flaps {
+    uint32 position = 1;
+}
