@@ -11,9 +11,3 @@ message RoverManual {
     // Braking pressure in range [0, 1]
     float brake = 3;
 }
-
-message Rover {
-    oneof mode {
-        RoverManual manual = 1;
-    }
-}

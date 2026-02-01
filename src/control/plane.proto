@@ -30,11 +30,3 @@ message PlaneTaxi {
     // for takeoff and taxiing
     PlaneManual plane = 2;
 }
-
-message Plane {
-    oneof mode {
-        PlaneManual manual = 1;
-        PlaneAuto autopilot = 2;
-        PlaneTaxi taxi = 3;
-    }
-}

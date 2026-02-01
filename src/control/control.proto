@@ -5,13 +5,18 @@ import "control/copter.proto";
 import "control/plane.proto";
 import "control/rover.proto";
 
-message Controls {
-    oneof vehicle {
-        Copter copter = 1;
-        Plane plane = 2;
-        Rover rover = 3;
-    }
-    reserved 4 to 8;
+message Disarmed {}
 
-    bool armed = 9;
+message Controls {
+    oneof mode {
+        CopterManual copter_manual = 1;
+        CopterAngularVelocity copter_angular_velocity = 2;
+        CopterAttitude copter_attitude = 3;
+        CopterLinearVelocity copter_linear_velocity = 4;
+        PlaneManual plane_manual = 5;
+        PlaneAuto plane_auto = 6;
+        PlaneTaxi plane_taxi = 7;
+        RoverManual rover_manual = 8;
+        Disarmed disarmed = 15;
+    }
 }

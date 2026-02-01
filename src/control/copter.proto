@@ -30,12 +30,3 @@ message CopterLinearVelocity {
     // Velocity in NED coordinates in m/s
     Vector3f linear_velocity = 2;
 }
-
-message Copter {
-    oneof mode {
-        CopterManual manual = 1;
-        CopterAngularVelocity angular_velocity = 2;
-        CopterAttitude attitude = 3;
-        CopterLinearVelocity linear_velocity = 4;
-    }
-}
