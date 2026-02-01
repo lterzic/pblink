@@ -23,7 +23,7 @@ message Log {
     // Log severity (info, warning, ...)
     LogLevel level      = 1;
     // Log timestamp
-    Timestamp timestamp = 2;
+    Time timestamp      = 2;
     // Log message sequence number (in
     // the current session)
     uint32 message_id   = 3;

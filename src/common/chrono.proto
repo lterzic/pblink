@@ -1,17 +1,7 @@
 syntax = "proto3";
 package mp.pb;
 
-// Time since system start
-message Timestamp {
-    oneof units {
-        uint64 ms       = 1;
-        uint64 us       = 2;
-        uint64 ns       = 3;
-        uint64 cycles   = 4;
-    }
-}
-
-message Duration {
+message Time {
     oneof units {
         uint64 ms       = 1;
         uint64 us       = 2;

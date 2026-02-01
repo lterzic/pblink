@@ -9,7 +9,7 @@ import "config/config.proto";
 // timeout, config is loaded from storage if available,
 // else default is used.
 message ConfigHostRequest {
-    Duration request_timeout = 1;
+    Time request_timeout = 1;
     Config current_config = 2;
 }
 

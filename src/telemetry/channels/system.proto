@@ -39,7 +39,7 @@ message Kernel {
         // Task ID
         uint32 task_id = 1;
         // Switch timestamp
-        Timestamp timestamp = 2;
+        Time timestamp = 2;
     }
     // Total task switch count
     uint64 switch_count = 1;

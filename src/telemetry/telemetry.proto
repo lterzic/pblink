@@ -7,7 +7,7 @@ import "telemetry/channel.proto";
 // One or more channels with additional metadata like timestamp, ...
 message Telemetry {
     // Timestamp of starting the creation of this message
-    Timestamp timestamp = 1;
+    Time timestamp = 1;
     // In case of additional metadata like
     // telemetry specific message id, ...
     reserved 2 to 8;
