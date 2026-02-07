@@ -1,0 +1,23 @@
+syntax = "proto3";
+package pblink.control;
+
+message RoverManual {
+    // Throttle in range [0, 1]
+    float throttle = 1;
+    // Curvature (k) is the inverse of the (desired) turn radius, in units
+    // of 1/m. No turn (heading straight) is represented by k = 0. Positive
+    // k indicates turn left, negative k indicates turn right.
+    float curvature = 2;
+    // Braking pressure in range [0, 1]
+    float brake = 3;
+}
+
+message TransmissionShift {
+    // True for up-shift
+    bool up_down = 1;
+}
+
+message ParkingBrake {
+    // Set the parking brake
+    bool activated = 1;
+}

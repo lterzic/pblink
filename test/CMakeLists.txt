@@ -24,9 +24,9 @@ execute_process(COMMAND
 
 # Static library with all the generated cpp files
 file(GLOB_RECURSE GEN_FILES "${PROTO_GEN_DIR}/*.pb.cc")
-add_library(minipilot-proto STATIC ${GEN_FILES})
-target_link_libraries(minipilot-proto PUBLIC libprotobuf)
-target_include_directories(minipilot-proto PUBLIC ${PROTO_GEN_DIR})
+add_library(pblink_cpp STATIC ${GEN_FILES})
+target_link_libraries(pblink_cpp PUBLIC libprotobuf)
+target_include_directories(pblink_cpp PUBLIC ${PROTO_GEN_DIR})
 
-add_executable(minipilot-proto-test test.cpp)
-target_link_libraries(minipilot-proto-test PRIVATE minipilot-proto)
+add_executable(pblink_test test.cpp)
+target_link_libraries(pblink_test PRIVATE pblink_cpp)

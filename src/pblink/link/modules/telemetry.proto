@@ -1,0 +1,26 @@
+syntax = "proto3";
+package pblink.link;
+
+import "pblink/telemetry/telemetry.proto";
+
+message TelemetryUplink {
+    // Request a channel to be periodically sent
+    message Subscribe {
+        // Channel tag
+        uint32 channel = 1;
+        // Source id
+        uint32 source_id = 2;
+        // TODO: Channel rate
+    }
+
+    oneof payload {
+        Subscribe subscribe = 1;
+    }
+}
+
+message TelemetryDownlink {
+    oneof payload {
+        telemetry.Broadcast broadcast = 1;
+        telemetry.Telemetry telemetry = 2;
+    }
+}

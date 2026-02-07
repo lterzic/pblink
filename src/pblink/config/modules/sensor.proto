@@ -1,0 +1,10 @@
+syntax = "proto3";
+package pblink.config;
+
+import "pblink/common/math.proto";
+
+message SensorConfig {
+    Vector3f accelerometer_bias = 1;
+    Vector3f magnetometer_hard_iron = 2;
+    Matrix3f magnetometer_soft_iron = 3;
+}

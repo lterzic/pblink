@@ -1,0 +1,14 @@
+syntax = "proto3";
+package pblink.config;
+
+import "pblink/config/modules/link.proto";
+import "pblink/config/modules/sensor.proto";
+
+message Config {
+    // vehicle id
+    // telemetry period
+    // pid coefficients
+
+    LinkConfig link = 1;
+    SensorConfig sensor = 2;
+}

@@ -1,3 +1,0 @@
-// mp.pb.logging.LogArg.string     max_size:16
-// mp.pb.logging.Log.format        max_size:32
-mp.pb.logging.Log.args          max_count:8

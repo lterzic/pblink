@@ -1,0 +1,45 @@
+syntax = "proto3";
+package pblink.telemetry;
+
+import "pblink/common/state.proto";
+import "pblink/telemetry/channels/actuators.proto";
+import "pblink/telemetry/channels/sensors.proto";
+import "pblink/telemetry/channels/system.proto";
+
+message Channel {
+    // ID of this channel producer within the channel type
+    uint32 source_id = 1;
+    // Future metadata
+    reserved 2 to 8;
+
+    // Channel name provided by the producer
+    // Sent on broadcast only
+    string name = 100;
+
+    // Future common channels
+    reserved 11 to 20;
+    // Future sensor types
+    reserved 25 to 40;
+    // Future actuator types
+    reserved 43 to 60;
+    // Future system types
+    reserved 65 to 80;
+    oneof payload {
+        // Common
+        State state = 9;
+        Coordinates coordinates = 10;
+        // Sensors
+        Battery battery = 21;
+        Accelerometer accelerometer = 22;
+        Gyroscope gyroscope = 23;
+        Barometer barometer = 24;
+        // Actuators
+        Motor motor = 41;
+        Servo servo = 42;
+        // System
+        CPUCore cpu_core = 61;
+        Memory memory = 62;
+        Task task = 63;
+        Kernel kernel = 64;
+    }
+}

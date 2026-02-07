@@ -1,6 +1,0 @@
-syntax = "proto3";
-package mp.pb.config;
-
-message LinkConfig {
-    uint64 shared_key = 1;
-}

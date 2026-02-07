@@ -1,0 +1,3 @@
+// pblink.logging.LogArg.string     max_size:16
+// pblink.logging.Log.format        max_size:32
+pblink.logging.Log.args          max_count:8

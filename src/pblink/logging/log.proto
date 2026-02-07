@@ -1,0 +1,38 @@
+syntax = "proto3";
+package pblink.logging;
+
+import "pblink/common/chrono.proto";
+
+enum LogLevel {
+    LOG_LEVEL_DEBUG     = 0;
+    LOG_LEVEL_INFO      = 1;
+    LOG_LEVEL_WARNING   = 2;
+    LOG_LEVEL_ERROR     = 3;
+}
+
+message LogArg {
+    oneof value {
+        int32 int32v = 1;
+        uint32 uint32v = 2;
+        float floatv = 3;
+        string stringv = 4;
+    }
+}
+
+message Log {
+    // Log severity (info, warning, ...)
+    LogLevel level      = 1;
+    // Log timestamp
+    Time timestamp      = 2;
+    // Log message sequence number (in
+    // the current session)
+    uint32 message_id   = 3;
+    // Log format string based on std::format
+    string format       = 4;
+    // Zero or more arguments
+    repeated LogArg args = 5;
+}
+
+// TODO: Add message LogFormatSync which sends all of the
+// format strings with identifying keys to the host on init,
+// to allow later sending only format key and args

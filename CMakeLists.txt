@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(minipilot-proto VERSION 1.0)
+project(pblink)
 
 # Build the tests and protobuf library if working
 # specifically on this project

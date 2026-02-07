@@ -1,0 +1,20 @@
+syntax = "proto3";
+package pblink.link;
+
+import "pblink/logging/log.proto";
+
+message LoggingUplink {
+    message SetLevel {
+        logging.LogLevel level = 1;
+    }
+
+    oneof payload {
+        SetLevel set_level = 1;
+    }
+}
+
+message LoggingDownlink {
+    oneof payload {
+        logging.Log log = 1;
+    }
+}

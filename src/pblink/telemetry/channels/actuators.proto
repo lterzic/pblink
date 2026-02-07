@@ -1,0 +1,23 @@
+syntax = "proto3";
+package pblink.telemetry;
+
+message Motor {
+    // Current motor speed in radians/second
+    float angular_speed     = 1;
+    // Input throttle in range [0, 1]
+    float input_throttle    = 2;
+    // Spin direction of the motor looking from the front (shaft)
+    bool spin_cw            = 100;
+}
+
+message Servo {
+    // Current servo angle in radians
+    // Can be both positive and negative
+    float angle         = 1;
+    // Servo input angle in radians
+    float input_angle   = 2;
+    // Minimum angle in radians
+    float min_angle     = 100;
+    // Maximum angle in radians
+    float max_angle     = 101;
+}

@@ -1,1 +1,3 @@
-# Minipilot - Protocol Buffers definitions
+## PBLink
+
+Protobuf based drone communication protocol.
