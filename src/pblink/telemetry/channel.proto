@@ -1,6 +1,7 @@
 syntax = "proto3";
 package pblink.telemetry;
 
+import "pblink/common/math.proto";
 import "pblink/common/state.proto";
 import "pblink/telemetry/channels/actuators.proto";
 import "pblink/telemetry/channels/sensors.proto";
@@ -17,7 +18,7 @@ message Channel {
     string name = 100;
 
     // Future common channels
-    reserved 11 to 20;
+    reserved 16 to 20;
     // Future sensor types
     reserved 25 to 40;
     // Future actuator types
@@ -26,8 +27,13 @@ message Channel {
     reserved 65 to 80;
     oneof payload {
         // Common
-        State state = 9;
-        Coordinates coordinates = 10;
+        Vector3f position = 9;
+        Vector3f velocity = 10;
+        Vector3f acceleration = 11;
+        Quaternionf rotation = 12;
+        Vector3f angular_velocity = 13;
+        Coordinates coordinates = 14;
+        Vector3f gyroscope_drift = 15;
         // Sensors
         Battery battery = 21;
         Accelerometer accelerometer = 22;
