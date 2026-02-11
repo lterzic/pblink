@@ -1,6 +1,7 @@
 syntax = "proto3";
 package pblink.link;
 
+import "pblink/telemetry/channel.proto";
 import "pblink/telemetry/telemetry.proto";
 
 message TelemetryUplink {
@@ -13,14 +14,31 @@ message TelemetryUplink {
         // TODO: Channel rate
     }
 
+    // Request a list of available channels
+    message BroadcastRequest {}
+
     oneof payload {
         Subscribe subscribe = 1;
+        BroadcastRequest broadcast_request = 2;
     }
 }
 
 message TelemetryDownlink {
+    // Sent on start or on request with information
+    // about available channels, frequencies, ...
+    message ChannelBroadcast {
+        // List of available channels and additional data
+        // that they might provide. Additional broadcast data
+        // is currently placed into the same message as regular
+        // channel data, starting from tag 100
+        // TODO: Channel payloads can be split into regular
+        // Channel messages and ChannelBroadcast messages
+        repeated telemetry.Channel channels = 1;
+        // TODO: Supported telemetry rates enum
+    }
+    
     oneof payload {
-        telemetry.Broadcast broadcast = 1;
+        ChannelBroadcast broadcast = 1;
         telemetry.Telemetry telemetry = 2;
     }
 }

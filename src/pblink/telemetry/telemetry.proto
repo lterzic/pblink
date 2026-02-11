@@ -16,16 +16,3 @@ message Telemetry {
     // the time of creating this message
     repeated Channel channels = 9;
 }
-
-// Sent on start or on request with information
-// about available channels, frequencies, ...
-message Broadcast {
-    // List of available channels and additional data
-    // that they might provide. Additional broadcast data
-    // is currently placed into the same message as regular
-    // channel data, starting from tag 100
-    // TODO: Channel payloads can be split into regular
-    // Channel messages and ChannelBroadcast messages
-    repeated telemetry.Channel channels = 1;
-    // TODO: Supported telemetry rates enum
-}
